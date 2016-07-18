@@ -1,0 +1,45 @@
+#' Normalize in a tissue aware context
+#'
+#' This function provides a wrapper to various normalization methods developed.
+#' Currently it only wraps qsmooth and quantile normalization returning a log-transformed
+#' normalized matrix. qsmooth is a normalization approach that normalizes samples in
+#' a condition aware manner.
+#'
+#' @param obj ExpressionSet object
+#' @param groups Vector of labels for each sample or a column name of the phenoData slot
+#' for the ids to filter. Default is the column names
+#' @param normalizationMethod Choice of 'qsmooth' or 'quantile'
+#' @param ... Options for \code{\link{qsmooth}} function or \code{\link[limma]{normalizeQuantiles}}
+#'
+#' @return ExpressionSet object with an assayData called normalizedMatrix
+#' @export
+#'
+#' @source The function qsmooth comes from the qsmooth packages
+#' currently available on github under user 'kokrah'.
+#'
+#' @importFrom limma normalizeQuantiles
+#' @importFrom Biobase storageMode
+#' @importFrom Biobase storageMode<-
+#' @importFrom Biobase assayData
+#' @importFrom Biobase assayData<-
+#' @importClassesFrom Biobase eSet
+#' @importClassesFrom Biobase ExpressionSet
+#'
+#' @examples
+#' data(skin)
+#' normalizeTissueAware(skin,"SMTSD")
+normalizeTissueAware<-function(obj,groups,normalizationMethod="qsmooth",...){
+  if(length(groups)==1){
+    groups = factor(pData(obj)[,groups])
+  }
+  storageMode(obj) <- "environment"
+  if(normalizationMethod=="qsmooth" | length(unique(groups))==1){
+    normalizedMatrix = qsmooth(log2(exprs(obj)+1),groups=groups,...)
+  } else if (normalizationMethod =="quantile"){
+    normalizedMatrix = normalizeQuantiles(exprs(obj))
+    normalizedMatrix = log2(normalizedMatrix+1)
+  }
+  assayData(obj)[["normalizedMatrix"]] = normalizedMatrix
+  storageMode(obj) <- "lockedEnvironment"
+  obj
+}
