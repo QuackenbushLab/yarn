@@ -5,7 +5,8 @@
 \title{Check for wrong annotation of a sample using classical MDS and control genes.}
 \usage{
 checkMisAnnotation(obj, phenotype, controlGenes = "all",
-  columnID = "chromosome_name", legendPosition = NULL, ...)
+  columnID = "chromosome_name", plotFlag = TRUE, legendPosition = NULL,
+  ...)
 }
 \arguments{
 \item{obj}{ExpressionSet object.}
@@ -16,9 +17,11 @@ checkMisAnnotation(obj, phenotype, controlGenes = "all",
 
 \item{columnID}{Column name where controlGenes is defined in the featureData slot if other than 'all'.}
 
+\item{plotFlag}{TRUE/FALSE Whether to plot or not}
+
 \item{legendPosition}{Location for the legend.}
 
-\item{...}{Extra parameters for plotMDS function.}
+\item{...}{Extra parameters for \code{\link{plotCMDS}} function.}
 }
 \value{
 Plots a classical multi-dimensional scaling of the 'controlGenes'. Optionally returns co-ordinates.

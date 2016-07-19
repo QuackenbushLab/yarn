@@ -4,7 +4,7 @@
 \alias{checkTissuesToMerge}
 \title{Check tissues to merge based on gene expression profile}
 \usage{
-checkTissuesToMerge(obj, majorGroups, minorGroups, ...)
+checkTissuesToMerge(obj, majorGroups, minorGroups, plotFlag = TRUE, ...)
 }
 \arguments{
 \item{obj}{ExpressionSet object.}
@@ -12,6 +12,8 @@ checkTissuesToMerge(obj, majorGroups, minorGroups, ...)
 \item{majorGroups}{Column name in the phenoData slot that describes the general body region or site of the sample.}
 
 \item{minorGroups}{Column name in the phenoData slot that describes the specific body region or site of the sample.}
+
+\item{plotFlag}{TRUE/FALSE whether to plot or not}
 
 \item{...}{Parameters that can go to \link{checkMissAnnotation}}
 }
