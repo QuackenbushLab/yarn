@@ -8,34 +8,50 @@ You can install yarn from github with:
 
 ```R
 # install.packages("devtools")
-devtools::install_github("jnpaulson/yarn")
+devtools::install_github("quackenbushlab/yarn")
 ```
 
 ## Example
 
-This is a basic workflow: 
+
+This is a basic workflow in terms of code: 
+
+
+0. First always remember to have the library loaded.
+```R
+library(yarn)
+```
 
 1.  Download the GTEx gene count data as an ExpressionSet object or load the sample skin dataset.
 ```R
+library(yarn)
 data(skin)
-obj = downloadGTEx()
 ```
-2. Check mis-annotation of gender
+
+2. Check mis-annotation of gender or other phenotypes using group-specific genes
 ```R
-checkMisAnnotation(obj,"GENDER",controlGenes="Y",legendPosition="topleft")
+checkMisAnnotation(skin,"GENDER",controlGenes="Y",legendPosition="topleft")
 ```
+
 3. Decide what sub-groups should be merged
 ```R
 checkTissuesToMerge(skin,"SMTS","SMTSD")
 ```
-4. Filter lowly expressed genes or condition specific genes
+
+4. Filter lowly expressed genes
 ```R
-obj = filterLowGenes(skin,"SMTS")
-obj = filterGenes(skin,labels=c("X","Y","MT"),featureName = "chromosome_name")
+skin_filtered = filterLowGenes(skin,"SMTSD")
+dim(skin)
+dim(skin_filtered)
+# Or group specific genes
+tmp = filterGenes(skin,labels=c("X","Y","MT"),featureName = "chromosome_name")
 # Keep only the sex names
-obj = filterGenes(skin,labels=c("X","Y","MT"),featureName = "chromosome_name",keepOnly=TRUE)
+tmp = filterGenes(skin,labels=c("X","Y","MT"),featureName = "chromosome_name",keepOnly=TRUE)
 ```
-5. Normalize in a group-aware manner
+
+5. Normalize in a tissue or group-aware manner
 ```R
-skin = normalizeTissueAware(skin,"SMTSD")
+plotDensity(skin_filtered,"SMTSD",main="log2 raw counts")
+skin_filtered = normalizeTissueAware(skin_filtered,"SMTSD")
+plotDensity(skin_filtered,"SMTSD",normalized=TRUE,main="Normalized")
 ```
