@@ -37,6 +37,7 @@ annotateFromBiomart <- function(obj,genes=featureNames(obj),filters="ensembl_gen
     anno  = anno[-throw,]
   }
   anno = anno[match(genes,anno[,"ensembl_gene_id"]),]
+  if(!is.null(fData(obj))) anno = cbind(fData(obj),anno)
   fData(obj) = anno
   obj
 }

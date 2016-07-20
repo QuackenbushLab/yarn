@@ -5,7 +5,7 @@
 \title{Plot classical MDS of dataset}
 \usage{
 plotCMDS(obj, comp = 1:2, distFun = dist, distMethod = "euclidian",
-  n = NULL, samples = TRUE, plotFlag = TRUE, ...)
+  n = NULL, samples = TRUE, log = TRUE, plotFlag = TRUE, ...)
 }
 \arguments{
 \item{obj}{ExpressionSet object or objrix.}
@@ -19,6 +19,8 @@ plotCMDS(obj, comp = 1:2, distFun = dist, distMethod = "euclidian",
 \item{n}{Number of features to make use of in calculating your distances.}
 
 \item{samples}{Perform on samples or genes.}
+
+\item{log}{TRUE/FALSE log2-transform.}
 
 \item{plotFlag}{TRUE/FALSE whether to plot or not.}
 
