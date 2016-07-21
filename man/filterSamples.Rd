@@ -13,6 +13,8 @@ filterSamples(obj, ids, groups = colnames(obj))
 
 \item{groups}{Vector of labels for each sample or a column name of the phenoData slot
 for the ids to filter. Default is the column names.}
+
+\item{keepOnly}{Filter or keep only the samples with those labels.}
 }
 \value{
 Filtered ExpressionSet object

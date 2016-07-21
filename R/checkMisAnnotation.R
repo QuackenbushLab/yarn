@@ -16,18 +16,13 @@
 #' checkMisAnnotation(bladder,"GENDER",controlGenes="Y",legendPosition="topleft");}
 checkMisAnnotation <- function(obj,phenotype,controlGenes="all",
                                 columnID="chromosome_name",plotFlag=TRUE,legendPosition=NULL,...){
-  if(is.null(controlGenes) | is.na(controlGenes) | controlGenes=="all" | controlGenes == "ALL"){
-    keepGenes = 1:nrow(obj)
-  } else {
-    keepGenes = which(fData(obj)[,columnID]==controlGenes)
+  if(!is.null(controlGenes) | !is.na(controlGenes) | controlGenes!="all" | controlGenes!="ALL"){
+    obj = filterGenes(obj,labels=controlGenes,featureName=columnID,keepOnly=TRUE)
   }
-  obj = obj[keepGenes,]
   if(length(phenotype)==1){
-    pd = factor(pData(obj)[,phenotype])
-  } else {
-    pd = phenotype
+    phenotype = factor(pData(obj)[,phenotype])
   }
-  res = plotCMDS(obj,pch=21,bg=pd,plotFlag=plotFlag,...)
-  if(!is.null(legendPosition)) legend(legendPosition,legend=levels(pd),fill=1:length(levels(pd)))
+  res = plotCMDS(obj,pch=21,bg=phenotype,plotFlag=plotFlag,...)
+  if(!is.null(legendPosition)) legend(legendPosition,legend=levels(phenotype),fill=1:length(levels(phenotype)))
   invisible(res)
 }
