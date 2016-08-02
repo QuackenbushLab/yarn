@@ -16,7 +16,7 @@
 #' checkMisAnnotation(bladder,"GENDER",controlGenes="Y",legendPosition="topleft");}
 checkMisAnnotation <- function(obj,phenotype,controlGenes="all",
                                 columnID="chromosome_name",plotFlag=TRUE,legendPosition=NULL,...){
-  if(!is.null(controlGenes) | !is.na(controlGenes) | controlGenes!="all" | controlGenes!="ALL"){
+  if(tolower(controlGenes)!="all"){
     obj = filterGenes(obj,labels=controlGenes,featureName=columnID,keepOnly=TRUE)
   }
   if(length(phenotype)==1){

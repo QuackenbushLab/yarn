@@ -22,6 +22,7 @@
 #' @importFrom Biobase storageMode<-
 #' @importFrom Biobase assayData
 #' @importFrom Biobase assayData<-
+#' @importFrom preprocessCore normalize.quantiles
 #' @importClassesFrom Biobase eSet
 #' @importClassesFrom Biobase ExpressionSet
 #'
@@ -36,8 +37,14 @@ normalizeTissueAware<-function(obj,groups,normalizationMethod="qsmooth",...){
   if(normalizationMethod=="qsmooth" | length(unique(groups))==1){
     normalizedMatrix = qsmooth(log2(exprs(obj)+1),groups=groups,...)
   } else if (normalizationMethod =="quantile"){
-    normalizedMatrix = normalizeQuantiles(exprs(obj))
-    normalizedMatrix = log2(normalizedMatrix+1)
+    normalizedMatrix = sapply(unique(groups),function(i){
+      cnts = exprs(obj[,which(pData(obj)$our%in%i)])
+      nmat<-normalize.quantiles(cnts)
+      colnames(nmat) = colnames(cnts)
+      nmat
+    })
+    normalizedMatrix = Reduce("cbind",normalizedMatrix)
+    normalizedMatrix = normalizedMatrix[,match(colnames(obj),colnames(normalizedMatrix))]
   }
   assayData(obj)[["normalizedMatrix"]] = normalizedMatrix
   storageMode(obj) <- "lockedEnvironment"

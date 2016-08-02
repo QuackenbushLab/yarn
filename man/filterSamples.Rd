@@ -4,7 +4,7 @@
 \alias{filterSamples}
 \title{Filter samples}
 \usage{
-filterSamples(obj, ids, groups = colnames(obj))
+filterSamples(obj, ids, groups = colnames(obj), keepOnly = FALSE)
 }
 \arguments{
 \item{obj}{ExpressionSet object.}
