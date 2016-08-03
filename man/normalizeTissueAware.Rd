@@ -8,7 +8,8 @@ The function qsmooth comes from the qsmooth packages
 currently available on github under user 'kokrah'.
 }
 \usage{
-normalizeTissueAware(obj, groups, normalizationMethod = "qsmooth", ...)
+normalizeTissueAware(obj, groups, normalizationMethod = c("qsmooth",
+  "remove"), ...)
 }
 \arguments{
 \item{obj}{ExpressionSet object}

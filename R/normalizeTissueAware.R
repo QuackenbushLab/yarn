@@ -29,12 +29,13 @@
 #' @examples
 #' data(skin)
 #' normalizeTissueAware(skin,"SMTSD")
-normalizeTissueAware<-function(obj,groups,normalizationMethod="qsmooth",...){
+normalizeTissueAware<-function(obj,groups,normalizationMethod=c("qsmooth","remove"),...){
+  normalizationMethod <- match.arg(normalizationMethod)
   if(length(groups)==1){
     groups = factor(pData(obj)[,groups])
   }
   storageMode(obj) <- "environment"
-  if(normalizationMethod=="qsmooth" | length(unique(groups))==1){
+  if(normalizationMethod=="qsmooth") {
     normalizedMatrix = qsmooth(log2(exprs(obj)+1),groups=groups,...)
   } else if (normalizationMethod =="quantile"){
     normalizedMatrix = sapply(unique(groups),function(i){
