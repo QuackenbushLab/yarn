@@ -25,14 +25,18 @@ downloadGTEx<-function(type="genes",file=NULL,...){
   pdFile = tempfile("phenodat",fileext=".txt")
   download(phenoFile,destfile=pdFile)
   pd = read_tsv(pdFile)
+  pd = as.matrix(pd)
   rownames(pd) = pd[,"SAMPID"]
   ids = sapply(strsplit(pd[,"SAMPID"],"-"),function(i)paste(i[1:2],collapse="-"))
 
   pd2File = tempfile("phenodat2",fileext=".txt")
   download(pheno2File,destfile=pd2File)
   pd2 = read_tsv(pd2File)
+  pd2 = as.matrix(pd2)
   rownames(pd2) = pd2[,"SUBJID"]
-  pd2 = pd2[ids,]
+  pd2 = pd2[which(rownames(pd2)%in%unique(ids)),]
+  pd2 = pd2[match(ids,rownames(pd2)),]
+  rownames(pd2) = colnames(counts)
 
   pdfinal = AnnotatedDataFrame(data.frame(cbind(pd,pd2)))
 
@@ -40,9 +44,10 @@ downloadGTEx<-function(type="genes",file=NULL,...){
     countsFile = tempfile("counts",fileext=".gz")
     download(geneFile,destfile=countsFile)
     cnts = suppressWarnings(read_tsv(geneFile,skip=2))
-    genes = cnts[,1]
-    geneNames = cnts[,2]
+    genes = unlist(cnts[,1])
+    geneNames = unlist(cnts[,2])
     counts = cnts[,-c(1:2)]
+    counts = as.matrix(counts)
     rownames(counts) = genes
     for(i in 1:nrow(problems(cnts))){
       counts[problems(cnts)$row[i],problems(cnts)$col[i]] = 100000
