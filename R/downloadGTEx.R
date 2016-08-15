@@ -4,13 +4,17 @@
 #'
 #' @param type Type of counts to download - default genes.
 #' @param file File path and name to automatically save the downloaded GTEx expression set. Saves as a RDS file.
+#' @param ... Does nothing currently.
 #'
 #' @return Organized ExpressionSet set.
 #' @export
 #'
 #' @importFrom downloader download
 #' @importFrom readr read_tsv
+#' @importFrom readr problems
 #' @importFrom Biobase AnnotatedDataFrame
+#' @importFrom Biobase phenoData<-
+#' @importFrom Biobase pData<-
 #'
 downloadGTEx<-function(type="genes",file=NULL,...){
   phenoFile = "http://www.gtexportal.org/static/datasets/gtex_analysis_v6/annotations/GTEx_Data_V6_Annotations_SampleAttributesDS.txt"

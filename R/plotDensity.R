@@ -5,7 +5,8 @@
 #' @param obj ExpressionSet object
 #' @param groups Vector of labels for each sample or a column name of the phenoData slot
 #' for the ids to filter. Default is the column names.
-#' @param normalized TRUE / FALSE, use the normalized matrix or raw counts
+#' @param normalized TRUE / FALSE, use the normalized matrix or log2-transformed raw counts
+#' @param legendPos Legend title position. If null, does not create legend by default.
 #' @param ... Extra parameters for \code{\link[quantro]{matdensity}}
 #'
 #' @return A density plot for each column in the ExpressionSet object colored by groups
@@ -14,6 +15,7 @@
 #' @importFrom quantro matdensity
 #' @importFrom Biobase assayData
 #' @importFrom Biobase storageMode
+#' @importFrom graphics legend
 #'
 #' @examples
 #' data(skin)
@@ -25,11 +27,7 @@ plotDensity<-function(obj,groups=NULL,normalized=FALSE,legendPos=NULL,...){
   if(length(groups)==1){
     groups = factor(pData(obj)[,groups])
   }
-  if(normalized == TRUE){
-    mat = assayData(obj)[["normalizedMatrix"]]
-  } else {
-    mat = log2(exprs(obj) + 1)
-  }
+  mat = extractMatrix(obj,normalized,log=TRUE)
   matdensity(mat,groupFactor=groups,...)
   if(!is.null(legendPos)){
     legend(legendPos,legend=levels(groups),fill=1:length(levels(groups)),box.col=NA)

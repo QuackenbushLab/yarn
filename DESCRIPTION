@@ -1,23 +1,25 @@
 Package: yarn
 Title: What the Package Does (one line, title case)
-Version: 0.1.01
+Version: 0.1.02
 Authors@R: person("Joseph", "Paulson", email = "jpaulson@jimmy.harvard.edu", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
 Depends:
     R (>= 3.3.0)
-License: Artistic 2.0
+License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 5.0.1
 Depends: Biobase
 Suggests: knitr,
     rmarkdown
-Imports: Biobase,
-    biomaRt,
+Imports: biomaRt,
     downloader,
     edgeR,
+    gplots,
     limma,
     matrixStats,
-    quantro,
-    readr
+    preprocessCore,
+    readr,
+    RColorBrewer,
+    quantro
 VignetteBuilder: knitr

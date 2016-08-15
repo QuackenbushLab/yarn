@@ -15,6 +15,7 @@
 #' @importFrom biomaRt getBM
 #' @importFrom Biobase featureNames
 #' @importFrom Biobase fData
+#' @importFrom Biobase fData<-
 #' @importFrom Biobase ExpressionSet
 #' @importClassesFrom Biobase ExpressionSet
 #'

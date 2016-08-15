@@ -5,10 +5,12 @@
 #' @param minorGroups Column name in the phenoData slot that describes the specific body region or site of the sample.
 #' @param filterFun Filter group specific genes that might disrupt PCoA analysis.
 #' @param plotFlag TRUE/FALSE whether to plot or not
-#' @param ... Parameters that can go to \link{checkMissAnnotation}
+#' @param ... Parameters that can go to \code{\link[yarn]{checkMissAnnotation}}
 #'
 #' @return CMDS Plots of the majorGroupss colored by the minorGroupss. Optional matrix of CMDS loadings for each comparison.
 #' @export
+#'
+#' @seealso checkTissuesToMerge
 #'
 #' @examples
 #' data(skin)

@@ -18,7 +18,7 @@ checkTissuesToMerge(obj, majorGroups, minorGroups, filterFun = NULL,
 
 \item{plotFlag}{TRUE/FALSE whether to plot or not}
 
-\item{...}{Parameters that can go to \link{checkMissAnnotation}}
+\item{...}{Parameters that can go to \code{\link[yarn]{checkMissAnnotation}}}
 }
 \value{
 CMDS Plots of the majorGroupss colored by the minorGroupss. Optional matrix of CMDS loadings for each comparison.
@@ -29,5 +29,8 @@ Check tissues to merge based on gene expression profile
 \examples{
 data(skin)
 checkTissuesToMerge(skin,"SMTS","SMTSD")
+}
+\seealso{
+checkTissuesToMerge
 }
 

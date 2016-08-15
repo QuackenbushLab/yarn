@@ -10,6 +10,8 @@ downloadGTEx(type = "genes", file = NULL, ...)
 \item{type}{Type of counts to download - default genes.}
 
 \item{file}{File path and name to automatically save the downloaded GTEx expression set. Saves as a RDS file.}
+
+\item{...}{Does nothing currently.}
 }
 \value{
 Organized ExpressionSet set.

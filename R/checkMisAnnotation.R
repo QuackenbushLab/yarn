@@ -8,6 +8,8 @@
 #' @param legendPosition Location for the legend.
 #' @param ... Extra parameters for \code{\link{plotCMDS}} function.
 #'
+#' @importFrom graphics legend
+#'
 #' @return Plots a classical multi-dimensional scaling of the 'controlGenes'. Optionally returns co-ordinates.
 #' @export
 #'

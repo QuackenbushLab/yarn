@@ -6,6 +6,9 @@
 #' @param groups groups to which samples belong (character vector)
 #' @param window window size for running median as a fraction on the number of rows of exprs
 #'
+#' @importFrom stats runmed
+#' @importFrom stats model.matrix
+#'
 #' @source \href{https://raw.githubusercontent.com/kokrah/qsmooth/master/R/qstats.r}{Kwame Okrah's qsmooth R package}
 #' Compute quantile statistics
 #'

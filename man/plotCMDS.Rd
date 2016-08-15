@@ -4,13 +4,16 @@
 \alias{plotCMDS}
 \title{Plot classical MDS of dataset}
 \usage{
-plotCMDS(obj, comp = 1:2, distFun = dist, distMethod = "euclidian",
-  n = NULL, samples = TRUE, log = TRUE, plotFlag = TRUE, ...)
+plotCMDS(obj, comp = 1:2, normalized = FALSE, distFun = dist,
+  distMethod = "euclidian", n = NULL, samples = TRUE, log = TRUE,
+  plotFlag = TRUE, ...)
 }
 \arguments{
 \item{obj}{ExpressionSet object or objrix.}
 
 \item{comp}{Which components to display.}
+
+\item{normalized}{TRUE / FALSE, use the normalized matrix or raw counts.}
 
 \item{distFun}{Distance function, default is dist.}
 
@@ -20,7 +23,7 @@ plotCMDS(obj, comp = 1:2, distFun = dist, distMethod = "euclidian",
 
 \item{samples}{Perform on samples or genes.}
 
-\item{log}{TRUE/FALSE log2-transform.}
+\item{log}{TRUE/FALSE log2-transform raw counts.}
 
 \item{plotFlag}{TRUE/FALSE whether to plot or not.}
 
@@ -34,9 +37,11 @@ This function plots the MDS coordinates for the "n" features of interest. Potent
 effects or feature relationships.
 }
 \examples{
-\donttest{data(skin)
-res = plotCMDS(skin)
-library(calibrate)
-textxy(X=res[,1],Y=res[,2],labs=rownames(res))}
+\donttest{
+data(skin)
+res = plotCMDS(skin,pch=21,bg=factor(pData(skin)$SMTSD))
+# library(calibrate)
+# textxy(X=res[,1],Y=res[,2],labs=rownames(res))
+}
 }
 

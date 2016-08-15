@@ -8,6 +8,10 @@
 #' @param plot plot weights? (default=FALSE)
 #' @param window window size for running median (a fraction of the number of rows of exprs)
 #'
+#' @importFrom stats ave
+#' @importFrom graphics par
+#' @importFrom graphics abline
+#'
 #' @return Normalized expression
 #'
 #' @source \href{https://raw.githubusercontent.com/kokrah/qsmooth/master/R/qsmooth.r}{Kwame Okrah's qsmooth R package}

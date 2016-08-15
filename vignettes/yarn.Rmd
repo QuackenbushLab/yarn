@@ -19,7 +19,7 @@ You can install yarn from github with:
 
 ```R
 # install.packages("devtools")
-devtools::install_github("jnpaulson/yarn")
+devtools::install_github("quackenbushlab/yarn")
 ```
 
 ## Preprocessing
@@ -35,9 +35,7 @@ We will make use of the `skin` dataset for examples. The `skin` dataset is a sma
 
 ```{r,echo=FALSE,include=FALSE}
 library(yarn)
-library(rafalib)
 data(skin)
-mypar()
 ```
 ```{r}
 skin

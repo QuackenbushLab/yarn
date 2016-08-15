@@ -12,7 +12,9 @@ plotDensity(obj, groups = NULL, normalized = FALSE, legendPos = NULL, ...)
 \item{groups}{Vector of labels for each sample or a column name of the phenoData slot
 for the ids to filter. Default is the column names.}
 
-\item{normalized}{TRUE / FALSE, use the normalized matrix or raw counts}
+\item{normalized}{TRUE / FALSE, use the normalized matrix or log2-transformed raw counts}
+
+\item{legendPos}{Legend title position. If null, does not create legend by default.}
 
 \item{...}{Extra parameters for \code{\link[quantro]{matdensity}}}
 }

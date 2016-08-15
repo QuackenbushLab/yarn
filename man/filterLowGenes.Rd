@@ -4,15 +4,17 @@
 \alias{filterLowGenes}
 \title{Filter genes that have less than a minimum threshold CPM for a given group/tissue}
 \usage{
-filterLowGenes(obj, groups, threshold = 1, ...)
+filterLowGenes(obj, groups, threshold = 1, minSamples = NULL, ...)
 }
 \arguments{
 \item{obj}{ExpressionSet object.}
 
-\item{groups}{Vector of labels for each sample or a column name of the phenoData slot
+\item{groups}{Vector of labels for each sample or a column name of the phenoData slot.
 for the ids to filter. Default is the column names.}
 
-\item{threshold}{The minimum threshold for calling presence of a gene in a sample}
+\item{threshold}{The minimum threshold for calling presence of a gene in a sample.}
+
+\item{minSamples}{Minimum number of samples - defaults to half the minimum group size.}
 
 \item{...}{Options for \code{\link[edgeR]{cpm}}}
 }
