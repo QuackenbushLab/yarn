@@ -16,6 +16,7 @@ extractMatrix<-function(obj,normalized=FALSE,log=TRUE){
     } else {
       if(!"normalizedMatrix"%in%names(assayData(obj))) stop("normalizedMatrix assayData missing")
       obj = assayData(obj)[["normalizedMatrix"]]
+      if(log & normalized) message("normalizedMatrix is assumed to already be log-transformed")
       log = FALSE
     }
   }

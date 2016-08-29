@@ -18,10 +18,12 @@
 #' data(skin)
 #' filterLowGenes(skin,"SMTSD")
 filterLowGenes<-function(obj,groups,threshold=1,minSamples=NULL,...){
-  if(length(groups)==1){
-    minSamples=min(table(pData(obj)[,groups]))/2
-  } else {
-    minSamples = min(table(groups))/2
+  if(is.null(minSamples)){
+    if(length(groups)==1){
+      minSamples=min(table(pData(obj)[,groups]))/2
+    } else {
+      minSamples = min(table(groups))/2
+    }
   }
   counts = cpm(exprs(obj),...)
   keep   = rowSums(counts>threshold)>=minSamples
