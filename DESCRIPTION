@@ -1,8 +1,12 @@
 Package: yarn
-Title: What the Package Does (one line, title case)
-Version: 0.1.04
-Authors@R: person("Joseph", "Paulson", email = "jpaulson@jimmy.harvard.edu", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Title: YARN: Robust Multi-Condition RNA-Seq Preprocessing and Normalization
+Version: 0.99.00
+Authors@R: c(person("Joseph", "Paulson", email = "jpaulson@jimmy.harvard.edu", role = c("aut", "cre")),
+          person("John", "Quackenbush", email = "johnq@jimmy.harvard.edu", role = c("aut")))
+Description: Expedite large RNA-Seq analyses using a combination of previously developed tools.
+    YARN is meant to make it easier for the user in performing basic mis-annotation quality control,
+    filtering, and condition-aware normalization. YARN leverages many Bioconductor tools and statistical
+    techniques to account for the large heterogeneity and sparsity found in very large RNA-seq experiments.
 Depends:
     R (>= 3.3.0)
 License: Artistic-2.0
