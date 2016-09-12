@@ -1,6 +1,6 @@
 [![Travis-CI Build Status](https://travis-ci.org/jnpaulson/yarn.svg?branch=master)](https://travis-ci.org/QuackenbushLab/yarn)
 
-# yarn - Yet Another RNa-seq package
+# YARN: Robust Multi-Tissue RNA-Seq Preprocessing and Normalization
 
 The goal of yarn is to expedite large RNA-seq analyses using a combination of previously developed tools. Yarn is meant to make it easier for the user to perform accurate comparison of conditions by leveraging many Bioconductor tools and various statistical and normalization techniques while accounting for the large heterogeneity and sparsity found in very large RNA-seq experiments. 
 
