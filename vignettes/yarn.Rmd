@@ -1,17 +1,17 @@
 ---
-title: "Preprocessing Large Sparse RNA-seq Experiments"
-author: "Joseph N. Paulson"
+title: "YARN: Robust Multi-Tissue RNA-Seq Preprocessing and Normalization"
+author: "Joseph N. Paulson & John Quackenbush"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: rmarkdown::pdf_document
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{YARN: Robust Multi-Tissue RNA-Seq Preprocessing and Normalization}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-## yarn - Yet Another RNa-seq package
+## YARN - Yet Another RNa-seq package
 
-The goal of yarn is to expedite large RNA-seq analyses using a combination of previously developed tools. Yarn is meant to make it easier for the user to perform accurate comparison of conditions by leveraging many Bioconductor tools and various statistical and normalization techniques while accounting for the large heterogeneity and sparsity found in very large RNA-seq experiments. 
+The goal of yarn is to expedite large RNA-seq analyses using a combination of previously developed tools. Yarn is meant to make it easier for the user to perform accurate comparison of conditions by leveraging many Bioconductor tools and various statistical and normalization techniques while accounting for the large heterogeneity and sparsity found in very large RNA-seq experiments.
 
 ## Installation
 
@@ -19,8 +19,13 @@ You can install yarn from github with:
 
 ```R
 # install.packages("devtools")
-devtools::install_github("quackenbushlab/yarn")
+devtools::install_github("QuackenbushLab/yarn")
 ```
+
+## Quick Introduction
+
+If you're here to grab the GTEx version 6.0 data then look no further than this 
+[gist](https://gist.github.com/jnpaulson/8c2ccfb0185dc490ff72e51aef86678c) that uses yarn to download all the data and preprocess it for you.
 
 ## Preprocessing
 
@@ -41,8 +46,7 @@ data(skin)
 skin
 ```
 
-This is a basic workflow in terms of code: 
-
+This is a basic workflow. Details will be fleshed out: 
 
 0. First always remember to have the library loaded.
 ```R
@@ -50,6 +54,8 @@ library(yarn)
 ```
 
 1.  Download the GTEx gene count data as an ExpressionSet object or load the sample skin dataset.
+
+For computational reasons we load the sample skin data instead of having the user download the 
 ```R
 library(yarn)
 data(skin)
@@ -81,7 +87,40 @@ tmp = filterGenes(skin,labels=c("X","Y","MT"),featureName = "chromosome_name",ke
 
 5. Normalize in a tissue or group-aware manner
 ```{r density}
-plotDensity(skin_filtered,"SMTSD",main="log2 raw counts")
+plotDensity(skin_filtered,"SMTSD",main=expression('log'[2]*' raw expression'))
 skin_filtered = normalizeTissueAware(skin_filtered,"SMTSD")
 plotDensity(skin_filtered,"SMTSD",normalized=TRUE,main="Normalized")
+```
+
+## Helper functions
+
+Other than `checkMisAnnotation` and `checkTissuesToMerge` we provide a few plotting function.
+We include, `plotCMDS`, `plotDensity`, `plotHeatmap`.
+
+`plotCMDS` - PCoA / Classical Multi-Dimensional Scaling of the most variable genes. 
+```{r}
+data(skin)
+res = plotCMDS(skin,pch=21,bg=factor(pData(skin)$SMTSD))
+```
+
+`plotDensity` - Density plots colored by phenotype of choosing. Allows for inspection of global trend differences.
+```{r}
+filtData = filterLowGenes(skin,"SMTSD")
+plotDensity(filtData,groups="SMTSD",legendPos="topleft")
+```
+
+`plotHeatmap` - Heatmap of the most variable genes.
+```{r}
+library(RColorBrewer)
+tissues = pData(skin)$SMTSD
+heatmapColColors=brewer.pal(12,"Set3")[as.integer(factor(tissues))]
+heatmapCols = colorRampPalette(brewer.pal(9, "RdBu"))(50)
+plotHeatmap(skin,normalized=FALSE,log=TRUE,trace="none",n=10,
+ col = heatmapCols,ColSideColors = heatmapColColors,cexRow = 0.25,cexCol = 0.25)
+```
+
+## Information
+
+```{r}
+sessionInfo()
 ```
