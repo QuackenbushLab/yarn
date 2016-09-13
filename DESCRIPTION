@@ -1,6 +1,6 @@
 Package: yarn
 Title: YARN: Robust Multi-Condition RNA-Seq Preprocessing and Normalization
-Version: 0.99.00
+Version: 0.99.0
 Authors@R: c(person("Joseph", "Paulson", email = "jpaulson@jimmy.harvard.edu", role = c("aut", "cre")),
           person("John", "Quackenbush", email = "johnq@jimmy.harvard.edu", role = c("aut")))
 Description: Expedite large RNA-Seq analyses using a combination of previously developed tools.
