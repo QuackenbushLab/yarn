@@ -30,7 +30,8 @@ Plots a classical multi-dimensional scaling of the 'controlGenes'. Optionally re
 Check for wrong annotation of a sample using classical MDS and control genes.
 }
 \examples{
-\donttest{data(bladder);
-checkMisAnnotation(bladder,"GENDER",controlGenes="Y",legendPosition="topleft");}
+data(bladder)
+checkMisAnnotation(bladder,"GENDER",controlGenes="Y",legendPosition="topleft")
+
 }
 

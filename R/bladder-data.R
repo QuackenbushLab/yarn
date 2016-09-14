@@ -15,6 +15,8 @@
 #'
 #' @source GTEx Portal
 #'
+#' @return ExpressionSet object
+#'
 #' @examples
 #' \donttest{data(bladder);
 #' checkMissAnnotation(bladder);}

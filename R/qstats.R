@@ -9,6 +9,8 @@
 #' @importFrom stats runmed
 #' @importFrom stats model.matrix
 #'
+#' @return list of statistics
+#'
 #' @source \href{https://raw.githubusercontent.com/kokrah/qsmooth/master/R/qstats.r}{Kwame Okrah's qsmooth R package}
 #' Compute quantile statistics
 #'

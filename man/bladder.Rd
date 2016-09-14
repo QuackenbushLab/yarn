@@ -11,6 +11,9 @@ GTEx Portal
 \usage{
 data(bladder)
 }
+\value{
+ExpressionSet object
+}
 \description{
 Bladder RNA-seq data from the GTEx consortium. V6 release.
 }

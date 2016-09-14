@@ -14,8 +14,9 @@
 #' @export
 #'
 #' @examples
-#' \donttest{data(bladder);
-#' checkMisAnnotation(bladder,"GENDER",controlGenes="Y",legendPosition="topleft");}
+#' data(bladder)
+#' checkMisAnnotation(bladder,"GENDER",controlGenes="Y",legendPosition="topleft")
+#'
 checkMisAnnotation <- function(obj,phenotype,controlGenes="all",
                                 columnID="chromosome_name",plotFlag=TRUE,legendPosition=NULL,...){
   if(tolower(controlGenes)!="all"){

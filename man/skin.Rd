@@ -11,6 +11,9 @@ GTEx Portal
 \usage{
 data(skin)
 }
+\value{
+ExpressionSet object
+}
 \description{
 Skin RNA-seq data from the GTEx consortium. V6 release. Random selection of 20 skin samples.
 13 of the samples are fibroblast cells, 5 Skin sun exposed, 2 sun unexposed.

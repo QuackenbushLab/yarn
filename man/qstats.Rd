@@ -17,6 +17,9 @@ qstats(exprs, groups, window)
 
 \item{window}{window size for running median as a fraction on the number of rows of exprs}
 }
+\value{
+list of statistics
+}
 \description{
 This function was directly borrowed from github user kokrah.
 }

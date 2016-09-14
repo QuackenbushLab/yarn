@@ -1,8 +1,15 @@
 Package: yarn
 Title: YARN: Robust Multi-Condition RNA-Seq Preprocessing and Normalization
-Version: 0.99.0
-Authors@R: c(person("Joseph", "Paulson", email = "jpaulson@jimmy.harvard.edu", role = c("aut", "cre")),
-          person("John", "Quackenbush", email = "johnq@jimmy.harvard.edu", role = c("aut")))
+Version: 0.99.1
+Authors@R: c(person("Joseph","Paulson",email = "jpaulson@jimmy.harvard.edu",role = c("aut", "cre")),
+          person("Cho-Yi","Chen",role="aut"),
+          person("Camila","Lopes-Ramos",role="aut"),
+          person("Marieke","Kuijjer",role="aut"),
+          person("John","Platig",role="aut"),
+          person("Abhijeet","Sonawane",role="aut"),
+          person("Maud","Fagny",role="aut"),
+          person("Kimberly","Glass",role="aut"),
+          person("John","Quackenbush",email = "johnq@jimmy.harvard.edu",role="aut"))
 Description: Expedite large RNA-Seq analyses using a combination of previously developed tools.
     YARN is meant to make it easier for the user in performing basic mis-annotation quality control,
     filtering, and condition-aware normalization. YARN leverages many Bioconductor tools and statistical
@@ -15,15 +22,19 @@ LazyData: true
 RoxygenNote: 5.0.1
 Depends: Biobase
 Suggests: knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 0.8)
 Imports: biomaRt,
     downloader,
     edgeR,
     gplots,
+    graphics,
     limma,
     matrixStats,
     preprocessCore,
     readr,
     RColorBrewer,
+    stats,
     quantro
 VignetteBuilder: knitr
+biocViews: Software, QualityControl, GeneExpression, Sequencing, Preprocessing, Normalization, Annotation, Visualization, Clustering

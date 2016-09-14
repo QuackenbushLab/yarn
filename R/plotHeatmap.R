@@ -16,7 +16,12 @@
 #'
 #' @export
 #' @examples
+#' data(skin)
+#' tissues = pData(skin)$SMTSD
+#' plotHeatmap(skin,normalized=FALSE,log=TRUE,trace="none",n=10)
+#' # Even prettier
 #' \donttest{
+#' # library(RColorBrewer)
 #' data(skin)
 #' tissues = pData(skin)$SMTSD
 #' heatmapColColors=brewer.pal(12,"Set3")[as.integer(factor(tissues))]
