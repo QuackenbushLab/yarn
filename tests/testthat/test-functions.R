@@ -3,9 +3,9 @@
 ################################################################################
 library("yarn"); library("testthat"); 
 
-test_that("`calcNormFactors` function provides expected values", {
+test_that("`filterLowGenes` function provides expected values", {
   data(skin)
-  expect_equal(nrow(skin),40824)
-  skin = filterLowGenes(skin)
-  expect_equal(nrow(skin),19933)
+  expect_equal(as.numeric(nrow(skin)),40824)
+  skin = filterLowGenes(skin,"SMTSD")
+  expect_equal(as.numeric(nrow(skin)),19933)
 })
