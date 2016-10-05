@@ -4,7 +4,8 @@
 \alias{plotHeatmap}
 \title{Plot heatmap of most variable genes}
 \usage{
-plotHeatmap(obj, n = NULL, fun = sd, normalized = TRUE, log = TRUE, ...)
+plotHeatmap(obj, n = NULL, fun = stats::sd, normalized = TRUE,
+  log = TRUE, ...)
 }
 \arguments{
 \item{obj}{ExpressionSet object or objrix.}

@@ -16,15 +16,16 @@
 #'
 #' @examples
 #' data(skin)
-#' filterGenes(skin,labels = c("X","Y","MT"),featureName="chromosome_name")
-#' filterGenes(skin,labels = "protein_coding",featureName="gene_biotype",keepOnly=TRUE)
-filterGenes<-function(obj,labels=c("X","Y","MT"),featureName="chromosome_name",keepOnly=FALSE){
-  features = fData(obj)[,featureName]
-  if(keepOnly==FALSE){
-    throwAwayGenes = which(features%in%labels)
+#' filterGenes(skin,labels = c('X','Y','MT'),featureName='chromosome_name')
+#' filterGenes(skin,labels = 'protein_coding',featureName='gene_biotype',keepOnly=TRUE)
+filterGenes <- function(obj, labels = c("X", "Y", "MT"), featureName = "chromosome_name",
+                        keepOnly = FALSE) {
+  features <- fData(obj)[, featureName]
+  if (keepOnly == FALSE) {
+    throwAwayGenes <- which(features %in% labels)
   } else {
-    throwAwayGenes = which(!features%in%labels)
+    throwAwayGenes <- which(!features %in% labels)
   }
-  obj = obj[-throwAwayGenes,]
+  obj <- obj[-throwAwayGenes, ]
   obj
 }

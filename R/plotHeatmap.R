@@ -29,13 +29,15 @@
 #' plotHeatmap(skin,normalized=FALSE,log=TRUE,trace="none",n=10,
 #'  col = heatmapCols,ColSideColors = heatmapColColors,cexRow = 0.6,cexCol = 0.6)
 #'}
-plotHeatmap<-function(obj,n=NULL,fun=sd,normalized=TRUE,log=TRUE,...){
-  if(is.null(n)) n = min(nrow(obj),100)
-  mat = extractMatrix(obj,normalized,log)
-  genesToKeep = which(rowSums(mat) > 0)
-  geneStats = apply(mat[genesToKeep, ], 1, fun)
-  geneIndices = genesToKeep[order(geneStats,decreasing=TRUE)[seq_len(n)]]
-  mat <- mat[geneIndices,]
-  heatmap.2(mat,...)
+plotHeatmap <- function(obj, n = NULL, fun = stats::sd, normalized = TRUE,
+                        log = TRUE, ...) {
+  if (is.null(n))
+    n <- min(nrow(obj), 100)
+  mat <- extractMatrix(obj, normalized, log)
+  genesToKeep <- which(rowSums(mat) > 0)
+  geneStats <- apply(mat[genesToKeep, ], 1, fun)
+  geneIndices <- genesToKeep[order(geneStats, decreasing = TRUE)[seq_len(n)]]
+  mat <- mat[geneIndices, ]
+  heatmap.2(mat, ...)
   invisible(mat)
 }

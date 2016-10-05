@@ -28,22 +28,26 @@
 #' # library(calibrate)
 #' # textxy(X=res[,1],Y=res[,2],labs=rownames(res))
 #' }
-plotCMDS<-function(obj,comp=1:2,normalized=FALSE,distFun=dist,distMethod="euclidian",n=NULL,samples=TRUE,log=TRUE,plotFlag=TRUE,...){
-  if(is.null(n)) n = min(nrow(obj),1000)
-  obj = extractMatrix(obj,normalized,log)
-  genesToKeep <- which(rowSums(obj)>0)
-  geneVars<-rowSds(obj[genesToKeep,])
-  geneIndices<-genesToKeep[order(geneVars,decreasing=TRUE)[seq_len(n)]]
-  obj <- obj[geneIndices,]
+plotCMDS <- function(obj, comp = 1:2, normalized = FALSE, distFun = dist,
+                     distMethod = "euclidian", n = NULL, samples = TRUE, log = TRUE,
+                     plotFlag = TRUE, ...) {
+  if (is.null(n))
+    n <- min(nrow(obj), 1000)
+  obj <- extractMatrix(obj, normalized, log)
+  genesToKeep <- which(rowSums(obj) > 0)
+  geneVars <- rowSds(obj[genesToKeep, ])
+  geneIndices <- genesToKeep[order(geneVars, decreasing = TRUE)[seq_len(n)]]
+  obj <- obj[geneIndices, ]
 
-  if(samples==TRUE){
-    obj = t(obj)
+  if (samples == TRUE) {
+    obj <- t(obj)
   }
-  d <- distFun(obj,method=distMethod)
-  ord = cmdscale(d,k = max(comp))
-  xl = paste("MDS component:",comp[1])
-  yl = paste("MDS component:",comp[2])
+  d <- distFun(obj, method = distMethod)
+  ord <- cmdscale(d, k = max(comp))
+  xl <- paste("MDS component:", comp[1])
+  yl <- paste("MDS component:", comp[2])
 
-  if(plotFlag==TRUE) plot(ord[,comp],ylab=yl,xlab=xl,...)
-  invisible(ord[,comp])
+  if (plotFlag == TRUE)
+    plot(ord[, comp], ylab = yl, xlab = xl, ...)
+  invisible(ord[, comp])
 }

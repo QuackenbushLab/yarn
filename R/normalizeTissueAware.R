@@ -29,25 +29,33 @@
 #' @examples
 #' data(skin)
 #' normalizeTissueAware(skin,"SMTSD")
-normalizeTissueAware<-function(obj,groups,normalizationMethod=c("qsmooth","remove"),...){
+normalizeTissueAware <- function(obj, groups, normalizationMethod = c("qsmooth",
+                                                                      "quantile"), ...) {
   normalizationMethod <- match.arg(normalizationMethod)
-  if(length(groups)==1){
-    groups = factor(pData(obj)[,groups])
+  if (length(groups) == 1) {
+    groups <- factor(pData(obj)[, groups])
   }
   storageMode(obj) <- "environment"
-  if(normalizationMethod=="qsmooth") {
-    normalizedMatrix = qsmooth(log2(exprs(obj)+1),groups=groups,...)
-  } else if (normalizationMethod =="quantile"){
-    normalizedMatrix = sapply(unique(groups),function(i){
-      cnts = exprs(obj[,which(pData(obj)$our%in%i)])
-      nmat<-normalize.quantiles(cnts)
-      colnames(nmat) = colnames(cnts)
-      nmat
-    })
-    normalizedMatrix = Reduce("cbind",normalizedMatrix)
-    normalizedMatrix = normalizedMatrix[,match(colnames(obj),colnames(normalizedMatrix))]
+  if (normalizationMethod == "qsmooth") {
+    normalizedMatrix <- qsmooth(log2(exprs(obj) + 1), groups = groups,
+                                ...)
+  } else if (normalizationMethod == "quantile") {
+    if(length(unique(groups))>1){
+      normalizedMatrix <- sapply(unique(groups), function(i) {
+        cnts <- exprs(obj[, which(pData(obj)$our %in% i)])
+        nmat <- normalize.quantiles(cnts)
+        colnames(nmat) <- colnames(cnts)
+        nmat
+      })
+      normalizedMatrix <- Reduce("cbind", normalizedMatrix)
+      normalizedMatrix <- normalizedMatrix[, match(colnames(obj),
+                                                   colnames(normalizedMatrix))]
+    } else {
+      normalizedMatrix <- normalize.quantiles(exprs(obj))
+      colnames(normalizedMatrix) <- colnames(obj)
+    }
   }
-  assayData(obj)[["normalizedMatrix"]] = normalizedMatrix
+  assayData(obj)[["normalizedMatrix"]] <- normalizedMatrix
   storageMode(obj) <- "lockedEnvironment"
   obj
 }

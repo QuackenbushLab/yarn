@@ -9,7 +9,7 @@ currently available on github under user 'kokrah'.
 }
 \usage{
 normalizeTissueAware(obj, groups, normalizationMethod = c("qsmooth",
-  "remove"), ...)
+  "quantile"), ...)
 }
 \arguments{
 \item{obj}{ExpressionSet object}

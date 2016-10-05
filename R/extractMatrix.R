@@ -9,19 +9,21 @@
 #'
 #' @importFrom Biobase assayData
 #' @return matrix
-extractMatrix<-function(obj,normalized=FALSE,log=TRUE){
-  if(class(obj)=="ExpressionSet"){
-    if(!normalized){
-      obj = exprs(obj)
+extractMatrix <- function(obj, normalized = FALSE, log = TRUE) {
+  if (class(obj) == "ExpressionSet") {
+    if (!normalized) {
+      obj <- exprs(obj)
     } else {
-      if(!"normalizedMatrix"%in%names(assayData(obj))) stop("normalizedMatrix assayData missing")
-      obj = assayData(obj)[["normalizedMatrix"]]
-      if(log & normalized) message("normalizedMatrix is assumed to already be log-transformed")
-      log = FALSE
+      if (!"normalizedMatrix" %in% names(assayData(obj)))
+        stop("normalizedMatrix assayData missing")
+      obj <- assayData(obj)[["normalizedMatrix"]]
+      if (log & normalized)
+        message("normalizedMatrix is assumed to already be log-transformed")
+      log <- FALSE
     }
   }
-  if(log == TRUE){
-    obj = log2(obj+1)
+  if (log == TRUE) {
+    obj <- log2(obj + 1)
   }
   obj
 }

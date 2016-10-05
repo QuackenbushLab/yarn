@@ -31,7 +31,7 @@ Check for wrong annotation of a sample using classical MDS and control genes.
 }
 \examples{
 data(bladder)
-checkMisAnnotation(bladder,"GENDER",controlGenes="Y",legendPosition="topleft")
+checkMisAnnotation(bladder,'GENDER',controlGenes='Y',legendPosition='topleft')
 
 }
 

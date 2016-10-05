@@ -23,13 +23,15 @@
 #' plotDensity(filtData,groups="SMTSD",legendPos="topleft")
 #' # to remove the legend
 #' plotDensity(filtData,groups="SMTSD")
-plotDensity<-function(obj,groups=NULL,normalized=FALSE,legendPos=NULL,...){
-  if(length(groups)==1){
-    groups = factor(pData(obj)[,groups])
+plotDensity <- function(obj, groups = NULL, normalized = FALSE,
+                        legendPos = NULL, ...) {
+  if (length(groups) == 1) {
+    groups <- factor(pData(obj)[, groups])
   }
-  mat = extractMatrix(obj,normalized,log=TRUE)
-  matdensity(mat,groupFactor=groups,...)
-  if(!is.null(legendPos)){
-    legend(legendPos,legend=levels(groups),fill=1:length(levels(groups)),box.col=NA)
+  mat <- extractMatrix(obj, normalized, log = TRUE)
+  matdensity(mat, groupFactor = groups, ...)
+  if (!is.null(legendPos)) {
+    legend(legendPos, legend = levels(groups), fill = 1:length(levels(groups)),
+           box.col = NA)
   }
 }

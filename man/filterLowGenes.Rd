@@ -26,6 +26,6 @@ Filter genes that have less than a minimum threshold CPM for a given group/tissu
 }
 \examples{
 data(skin)
-filterLowGenes(skin,"SMTSD")
+filterLowGenes(skin,'SMTSD')
 }
 

@@ -15,15 +15,15 @@
 #' data(skin)
 #' filterSamples(skin,ids = "Skin - Not Sun Exposed (Suprapubic)",groups="SMTSD")
 #' filterSamples(skin,ids=c("GTEX-OHPL-0008-SM-4E3I9","GTEX-145MN-1526-SM-5SI9T"))
-filterSamples<-function(obj,ids,groups=colnames(obj),keepOnly=FALSE){
-  if(length(groups)==1){
-    groups = pData(obj)[,groups]
+filterSamples <- function(obj, ids, groups = colnames(obj), keepOnly = FALSE) {
+  if (length(groups) == 1) {
+    groups <- pData(obj)[, groups]
   }
-  throwAway = which(groups %in% ids)
-  if(keepOnly){
-    obj = obj[,throwAway]
+  throwAway <- which(groups %in% ids)
+  if (keepOnly) {
+    obj <- obj[, throwAway]
   } else {
-    obj = obj[,-throwAway]
+    obj <- obj[, -throwAway]
   }
   obj
 }

@@ -14,11 +14,11 @@
 #' @examples
 #' data(skin)
 #' filterMissingGenes(skin)
-filterMissingGenes<-function(obj,threshold=0){
-  sumGenes = rowSums(exprs(obj))
-  throwAwayGenes = which(sumGenes<=threshold)
-  if(length(which(sumGenes<=0))>0){
-    obj = obj[-throwAwayGenes,]
+filterMissingGenes <- function(obj, threshold = 0) {
+  sumGenes <- rowSums(exprs(obj))
+  throwAwayGenes <- which(sumGenes <= threshold)
+  if (length(which(sumGenes <= 0)) > 0) {
+    obj <- obj[-throwAwayGenes, ]
   }
   obj
 }

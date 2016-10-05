@@ -15,17 +15,21 @@
 #'
 #' @examples
 #' data(bladder)
-#' checkMisAnnotation(bladder,"GENDER",controlGenes="Y",legendPosition="topleft")
+#' checkMisAnnotation(bladder,'GENDER',controlGenes='Y',legendPosition='topleft')
 #'
-checkMisAnnotation <- function(obj,phenotype,controlGenes="all",
-                                columnID="chromosome_name",plotFlag=TRUE,legendPosition=NULL,...){
-  if(tolower(controlGenes)!="all"){
-    obj = filterGenes(obj,labels=controlGenes,featureName=columnID,keepOnly=TRUE)
+checkMisAnnotation <- function(obj, phenotype, controlGenes = "all",
+                               columnID = "chromosome_name", plotFlag = TRUE, legendPosition = NULL,
+                               ...) {
+  if (tolower(controlGenes) != "all") {
+    obj <- filterGenes(obj, labels = controlGenes, featureName = columnID,
+                       keepOnly = TRUE)
   }
-  if(length(phenotype)==1){
-    phenotype = factor(pData(obj)[,phenotype])
+  if (length(phenotype) == 1) {
+    phenotype <- factor(pData(obj)[, phenotype])
   }
-  res = plotCMDS(obj,pch=21,bg=phenotype,plotFlag=plotFlag,...)
-  if(!is.null(legendPosition)) legend(legendPosition,legend=levels(phenotype),fill=1:length(levels(phenotype)))
+  res <- plotCMDS(obj, pch = 21, bg = phenotype, plotFlag = plotFlag,
+                  ...)
+  if (!is.null(legendPosition))
+    legend(legendPosition, legend = levels(phenotype), fill = 1:length(levels(phenotype)))
   invisible(res)
 }
