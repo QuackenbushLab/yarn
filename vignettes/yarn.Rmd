@@ -18,8 +18,8 @@ The goal of yarn is to expedite large RNA-seq analyses using a combination of pr
 You can install yarn from github with:
 
 ```R
-# install.packages("devtools")
-devtools::install_github("QuackenbushLab/yarn")
+source("http://bioconductor.org/biocLite.R")
+biocLite("yarn")
 ```
 
 ## Quick Introduction
