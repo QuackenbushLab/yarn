@@ -7,7 +7,7 @@
 #' for the ids to filter. Default is the column names.
 #' @param normalized TRUE / FALSE, use the normalized matrix or log2-transformed raw counts
 #' @param legendPos Legend title position. If null, does not create legend by default.
-#' @param ... Extra parameters for \code{\link[quantro]{matdensity}}
+#' @param ... Extra parameters for \link[quantro]{matdensity}.
 #'
 #' @return A density plot for each column in the ExpressionSet object colored by groups
 #' @export
@@ -19,10 +19,11 @@
 #'
 #' @examples
 #' data(skin)
-#' filtData = filterLowGenes(skin,"SMTSD")
+#' filtData <- filterLowGenes(skin,"SMTSD")
 #' plotDensity(filtData,groups="SMTSD",legendPos="topleft")
 #' # to remove the legend
 #' plotDensity(filtData,groups="SMTSD")
+#'
 plotDensity <- function(obj, groups = NULL, normalized = FALSE,
                         legendPos = NULL, ...) {
   if (length(groups) == 1) {

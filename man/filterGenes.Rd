@@ -27,5 +27,6 @@ Alternatively, filter genes that are not protein-coding.
 data(skin)
 filterGenes(skin,labels = c('X','Y','MT'),featureName='chromosome_name')
 filterGenes(skin,labels = 'protein_coding',featureName='gene_biotype',keepOnly=TRUE)
+
 }
 

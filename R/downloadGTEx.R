@@ -17,7 +17,7 @@
 #' @importFrom Biobase pData<-
 #'
 #' @examples
-#' # obj = downloadGTEx(type='genes',file='~/Desktop/gtex.rds')
+#' # obj <- downloadGTEx(type='genes',file='~/Desktop/gtex.rds')
 downloadGTEx <- function(type = "genes", file = NULL, ...) {
   phenoFile <- "http://www.gtexportal.org/static/datasets/gtex_analysis_v6/annotations/GTEx_Data_V6_Annotations_SampleAttributesDS.txt"
   pheno2File <- "http://www.gtexportal.org/static/datasets/gtex_analysis_v6/annotations/GTEx_Data_V6_Annotations_SubjectPhenotypesDS.txt"

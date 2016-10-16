@@ -1,12 +1,13 @@
 #' Quantile shrinkage normalization
 #'
-#' This function was directly borrowed from github user kokrah.
+#' This function was modified from github user kokrah.
 #'
-#' @param exprs for counts use log2(raw counts + 1)), for MA use log2(raw intensities)
+#' @param obj for counts use log2(raw counts + 1)), for MA use log2(raw intensities)
 #' @param groups groups to which samples belong (character vector)
 #' @param norm.factors scaling normalization factors
 #' @param plot plot weights? (default=FALSE)
 #' @param window window size for running median (a fraction of the number of rows of exprs)
+#' @param log Whether or not the data should be log transformed before normalization, TRUE = YES.
 #'
 #' @importFrom stats ave
 #' @importFrom graphics par
@@ -15,8 +16,18 @@
 #' @return Normalized expression
 #'
 #' @source \href{https://raw.githubusercontent.com/kokrah/qsmooth/master/R/qsmooth.r}{Kwame Okrah's qsmooth R package}
-qsmooth <- function(exprs, groups, norm.factors = NULL, plot = FALSE,
-                    window = 0.05) {
+#' @examples
+#' data(skin)
+#' head(qsmooth(skin,groups=pData(skin)$SMTSD))
+#'
+qsmooth <- function(obj, groups, norm.factors = NULL, plot = FALSE,
+                    window = 0.05,log=TRUE) {
+  stopifnot(class(obj)=="ExpressionSet")
+  if(log==TRUE){
+    exprs <- log2(exprs(obj)+1)
+  } else {
+    exprs <- exprs(obj)
+  }
   # Stop if exprs contains any NA
   if (any(is.na(exprs)))
     stop("exprs contains NAs (K.Okrah)")

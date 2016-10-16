@@ -14,6 +14,7 @@
 #' @examples
 #' data(skin)
 #' filterMissingGenes(skin)
+#'
 filterMissingGenes <- function(obj, threshold = 0) {
   sumGenes <- rowSums(exprs(obj))
   throwAwayGenes <- which(sumGenes <= threshold)

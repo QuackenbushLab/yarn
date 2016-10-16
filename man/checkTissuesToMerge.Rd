@@ -29,6 +29,7 @@ Check tissues to merge based on gene expression profile
 \examples{
 data(skin)
 checkTissuesToMerge(skin,'SMTS','SMTSD')
+
 }
 \seealso{
 checkTissuesToMerge

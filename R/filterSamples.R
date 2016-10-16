@@ -15,6 +15,7 @@
 #' data(skin)
 #' filterSamples(skin,ids = "Skin - Not Sun Exposed (Suprapubic)",groups="SMTSD")
 #' filterSamples(skin,ids=c("GTEX-OHPL-0008-SM-4E3I9","GTEX-145MN-1526-SM-5SI9T"))
+#'
 filterSamples <- function(obj, ids, groups = colnames(obj), keepOnly = FALSE) {
   if (length(groups) == 1) {
     groups <- pData(obj)[, groups]

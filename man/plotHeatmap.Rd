@@ -12,7 +12,7 @@ plotHeatmap(obj, n = NULL, fun = stats::sd, normalized = TRUE,
 
 \item{n}{Number of features to make use of in plotting heatmap.}
 
-\item{fun}{Function to sort genes by, default \code{\link[stats]{sd}}.}
+\item{fun}{Function to sort genes by, default \link[stats]{sd}.}
 
 \item{normalized}{TRUE / FALSE, use the normalized matrix or raw counts.}
 
@@ -28,15 +28,15 @@ This function plots a heatmap of the gene expressions forthe "n" features of int
 }
 \examples{
 data(skin)
-tissues = pData(skin)$SMTSD
+tissues <- pData(skin)$SMTSD
 plotHeatmap(skin,normalized=FALSE,log=TRUE,trace="none",n=10)
 # Even prettier
 \donttest{
 # library(RColorBrewer)
 data(skin)
-tissues = pData(skin)$SMTSD
-heatmapColColors=brewer.pal(12,"Set3")[as.integer(factor(tissues))]
-heatmapCols = colorRampPalette(brewer.pal(9, "RdBu"))(50)
+tissues <- pData(skin)$SMTSD
+heatmapColColors <- brewer.pal(12,"Set3")[as.integer(factor(tissues))]
+heatmapCols <- colorRampPalette(brewer.pal(9, "RdBu"))(50)
 plotHeatmap(skin,normalized=FALSE,log=TRUE,trace="none",n=10,
  col = heatmapCols,ColSideColors = heatmapColColors,cexRow = 0.6,cexCol = 0.6)
 }

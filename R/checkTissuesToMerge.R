@@ -15,6 +15,7 @@
 #' @examples
 #' data(skin)
 #' checkTissuesToMerge(skin,'SMTS','SMTSD')
+#'
 checkTissuesToMerge <- function(obj, majorGroups, minorGroups,
                                 filterFun = NULL, plotFlag = TRUE, ...) {
   if (length(majorGroups) == 1) {

@@ -20,5 +20,6 @@ The main use case for this function is the removal of missing genes.
 \examples{
 data(skin)
 filterMissingGenes(skin)
+
 }
 

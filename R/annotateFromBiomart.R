@@ -21,7 +21,14 @@
 #'
 #' @examples
 #'
-#' host="dec2013.archive.ensembl.org"; biomart="ENSEMBL_MART_ENSEMBL";
+#' data(skin)
+#' # subsetting and changing column name just for a silly example
+#' skin <- skin[1:10,]
+#' colnames(fData(skin)) = paste("names",1:6)
+#' host<-"dec2013.archive.ensembl.org"; biomart<-"ENSEMBL_MART_ENSEMBL";
+#' genes <- sapply(strsplit(rownames(skin),split="\\."),function(i)i[1])
+#' newskin <-annotateFromBiomart(skin,genes=genes,biomar=biomart,host=host)
+#' head(fData(newskin)[,7:11])
 #'
 annotateFromBiomart <- function(obj,genes=featureNames(obj),filters="ensembl_gene_id",
                                 attributes=c("ensembl_gene_id","hgnc_symbol","chromosome_name","start_position","end_position"),

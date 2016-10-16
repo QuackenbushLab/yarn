@@ -5,7 +5,8 @@
 #' for the ids to filter. Default is the column names.
 #' @param threshold The minimum threshold for calling presence of a gene in a sample.
 #' @param minSamples Minimum number of samples - defaults to half the minimum group size.
-#' @param ... Options for \code{\link[edgeR]{cpm}}
+#' @param ... Options for \link[edgeR]{cpm}.
+#' @seealso \link[edgeR]{cpm} function defined in the edgeR package.
 #'
 #' @return Filtered ExpressionSet object
 #' @export
@@ -17,6 +18,7 @@
 #' @examples
 #' data(skin)
 #' filterLowGenes(skin,'SMTSD')
+#'
 filterLowGenes <- function(obj, groups, threshold = 1, minSamples = NULL,
                            ...) {
   if (is.null(minSamples)) {

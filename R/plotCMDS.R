@@ -23,7 +23,7 @@
 #' @export
 #' @examples
 #' data(skin)
-#' res = plotCMDS(skin,pch=21,bg=factor(pData(skin)$SMTSD))
+#' res <- plotCMDS(skin,pch=21,bg=factor(pData(skin)$SMTSD))
 #' \donttest{
 #' # library(calibrate)
 #' # textxy(X=res[,1],Y=res[,2],labs=rownames(res))

@@ -33,5 +33,6 @@ a condition aware manner.
 \examples{
 data(skin)
 normalizeTissueAware(skin,"SMTSD")
+
 }
 

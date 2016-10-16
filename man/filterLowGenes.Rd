@@ -16,7 +16,7 @@ for the ids to filter. Default is the column names.}
 
 \item{minSamples}{Minimum number of samples - defaults to half the minimum group size.}
 
-\item{...}{Options for \code{\link[edgeR]{cpm}}}
+\item{...}{Options for \link[edgeR]{cpm}.}
 }
 \value{
 Filtered ExpressionSet object
@@ -27,5 +27,9 @@ Filter genes that have less than a minimum threshold CPM for a given group/tissu
 \examples{
 data(skin)
 filterLowGenes(skin,'SMTSD')
+
+}
+\seealso{
+\link[edgeR]{cpm} function defined in the edgeR package.
 }
 

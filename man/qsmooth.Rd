@@ -7,10 +7,11 @@
 \href{https://raw.githubusercontent.com/kokrah/qsmooth/master/R/qsmooth.r}{Kwame Okrah's qsmooth R package}
 }
 \usage{
-qsmooth(exprs, groups, norm.factors = NULL, plot = FALSE, window = 0.05)
+qsmooth(obj, groups, norm.factors = NULL, plot = FALSE, window = 0.05,
+  log = TRUE)
 }
 \arguments{
-\item{exprs}{for counts use log2(raw counts + 1)), for MA use log2(raw intensities)}
+\item{obj}{for counts use log2(raw counts + 1)), for MA use log2(raw intensities)}
 
 \item{groups}{groups to which samples belong (character vector)}
 
@@ -19,11 +20,18 @@ qsmooth(exprs, groups, norm.factors = NULL, plot = FALSE, window = 0.05)
 \item{plot}{plot weights? (default=FALSE)}
 
 \item{window}{window size for running median (a fraction of the number of rows of exprs)}
+
+\item{log}{Whether or not the data should be log transformed before normalization, TRUE = YES.}
 }
 \value{
 Normalized expression
 }
 \description{
-This function was directly borrowed from github user kokrah.
+This function was modified from github user kokrah.
+}
+\examples{
+data(skin)
+head(qsmooth(skin,groups=pData(skin)$SMTSD))
+
 }
 

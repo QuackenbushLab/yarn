@@ -16,7 +16,7 @@ for the ids to filter. Default is the column names.}
 
 \item{legendPos}{Legend title position. If null, does not create legend by default.}
 
-\item{...}{Extra parameters for \code{\link[quantro]{matdensity}}}
+\item{...}{Extra parameters for \link[quantro]{matdensity}.}
 }
 \value{
 A density plot for each column in the ExpressionSet object colored by groups
@@ -26,9 +26,10 @@ Plots the density of the columns of a matrix. Wrapper for \code{\link[quantro]{m
 }
 \examples{
 data(skin)
-filtData = filterLowGenes(skin,"SMTSD")
+filtData <- filterLowGenes(skin,"SMTSD")
 plotDensity(filtData,groups="SMTSD",legendPos="topleft")
 # to remove the legend
 plotDensity(filtData,groups="SMTSD")
+
 }
 

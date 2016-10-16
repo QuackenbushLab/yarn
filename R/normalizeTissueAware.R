@@ -29,6 +29,7 @@
 #' @examples
 #' data(skin)
 #' normalizeTissueAware(skin,"SMTSD")
+#'
 normalizeTissueAware <- function(obj, groups, normalizationMethod = c("qsmooth",
                                                                       "quantile"), ...) {
   normalizationMethod <- match.arg(normalizationMethod)
@@ -37,7 +38,7 @@ normalizeTissueAware <- function(obj, groups, normalizationMethod = c("qsmooth",
   }
   storageMode(obj) <- "environment"
   if (normalizationMethod == "qsmooth") {
-    normalizedMatrix <- qsmooth(log2(exprs(obj) + 1), groups = groups,
+    normalizedMatrix <- qsmooth(obj, groups = groups,
                                 ...)
   } else if (normalizationMethod == "quantile") {
     if(length(unique(groups))>1){
