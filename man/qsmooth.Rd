@@ -31,7 +31,7 @@ This function was modified from github user kokrah.
 }
 \examples{
 data(skin)
-head(qsmooth(skin,groups=pData(skin)$SMTSD))
+head(yarn:::qsmooth(skin,groups=pData(skin)$SMTSD))
 
 }
 

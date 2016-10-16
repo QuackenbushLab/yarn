@@ -18,7 +18,7 @@
 #' @source \href{https://raw.githubusercontent.com/kokrah/qsmooth/master/R/qsmooth.r}{Kwame Okrah's qsmooth R package}
 #' @examples
 #' data(skin)
-#' head(qsmooth(skin,groups=pData(skin)$SMTSD))
+#' head(yarn:::qsmooth(skin,groups=pData(skin)$SMTSD))
 #'
 qsmooth <- function(obj, groups, norm.factors = NULL, plot = FALSE,
                     window = 0.05,log=TRUE) {
